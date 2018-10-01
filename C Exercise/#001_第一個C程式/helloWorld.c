@@ -1,5 +1,5 @@
 //
-//  #01_helloWold.c
+//  #01_helloWorld.c
 //  My First C program
 //
 //  Created by Waylon.Yuen on 1/10/2018.
