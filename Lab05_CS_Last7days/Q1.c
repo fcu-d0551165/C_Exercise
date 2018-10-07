@@ -18,7 +18,7 @@ int main(){
                 min+=i;
             }
             min = min - 1; // 減掉第一次多加的數值
-        printf("%d\n\n", min);
+        printf("%d", min);
         }
         else{
             puts("error\n");
