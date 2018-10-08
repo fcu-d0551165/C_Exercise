@@ -10,15 +10,15 @@
 int main(){
     while(1){
         int min, max;
+        int sum;
         int i;
 
         scanf("%d%d", &min, &max);
         if(min < max){    
             for(i=min; i<=max; i++){
-                min+=i;
+                sum+=i;
             }
-            min = min - 1; // 減掉第一次多加的數值
-        printf("%d", min);
+        printf("%d", sum);
         }
         else{
             puts("error\n");
