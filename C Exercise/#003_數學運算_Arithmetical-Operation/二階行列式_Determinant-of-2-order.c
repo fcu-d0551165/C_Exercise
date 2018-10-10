@@ -15,10 +15,11 @@ int main(){
 
     /*Output*/
     for(i=0; i<=1; i++){        //row
+        printf(" |  ");
         for(j=0; j<=1; j++){    //column
-            printf("%d ", det2[i][j]);
+            printf("\t%d", det2[i][j]);
         }
-        puts("\n");
+        printf("\t|\n");
     }
 
     /*det-Operation*/
