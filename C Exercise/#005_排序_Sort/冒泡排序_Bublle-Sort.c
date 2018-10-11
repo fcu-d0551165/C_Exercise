@@ -9,7 +9,7 @@ int main(){
     int temp;
 
     /*冒泡排序法_Bubble Sort*/
-    for(i=0; i<10-1; i++){   
+    for(i=0; i<10-1; i++){  
         for(j=0; j<10-i-1; j++){ 
             if(Container[j] > Container[j+1])
             {
