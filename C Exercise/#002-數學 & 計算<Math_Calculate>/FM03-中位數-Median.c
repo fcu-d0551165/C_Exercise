@@ -1,3 +1,17 @@
+//
+//	Lebal #002-FM03
+//
+//  FM03-中位數-Median.c
+//	Version 1.2 
+//	
+//  Created by Waylon.Yuen on 18/10/2018.
+//	Last modified by Waylon.Yuen on 19/10/2018
+//  Copyright © 2018年 Oracragron. All rights reserved.
+//
+//  說明：輸入整數，判斷其是否為中位數。
+//	操作：輸入一整數，範圍是int標準。
+//	優化：1、輸入類型由int改為float。
+//
 #include<stdio.h>
 
 int A[128];
