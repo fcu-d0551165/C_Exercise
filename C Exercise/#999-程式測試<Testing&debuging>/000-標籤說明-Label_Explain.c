@@ -7,10 +7,11 @@ int main(){
     
     printf(
             " Label   Explain\n"
-            " #Dxx-   DeBug\n"      //有錯誤&調適
-            " #Exx-   Error\n"      //無法編譯
-            " #Fxx-   finished\n"   //完成
-            " #Txx-   Testing\n"    //測試&調適
+            "------------------------------------------\n"
+            " Dxx-    DeBug\n"      //有錯誤,某種情況下會死機
+            " Exx-    Error\n"      //無法編譯
+            " Fxx-    finished\n"   //完成,可以run且暫時沒發現BUG
+            " Txx-    Testing\n"    //零時檔案,等待調適
            );
     
     puts("\n\nEnd\n");
