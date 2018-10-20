@@ -3,7 +3,7 @@
 int main(){
 
     int i,j,k;
-    int level = 5;	
+    int level;	
     char request; 
     
     scanf("%d %c", &level, &request);
