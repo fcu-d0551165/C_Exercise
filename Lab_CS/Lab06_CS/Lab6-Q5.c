@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main(){
-    int i=0;
+    int i=1;
     int base, number, times;
     int ans;
 
@@ -11,19 +11,12 @@ int main(){
         ans = number * times;
     }
     else{
-        while(1){
-            ans = base/times;
-            ans = (ans+i)*times;
-            if(ans >= base){
-                i=1;
-                while(i != number){
-                    ans+=times;
-                    i++;
-                }
-                break;
-            }
-            i++;
-        }
+        while(base%times != 0){
+            base++;
+        }//直到是倍數關係
+
+        number--;
+        ans = base + (number*times); 
     }
 
     printf("%d", ans);
