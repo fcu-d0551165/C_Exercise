@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main(){
-    int i=1;
+    int i=0;
     int base, number, times;
     int ans;
 
@@ -14,7 +14,8 @@ int main(){
         while(1){
             ans = base/times;
             ans = (ans+i)*times;
-            if(ans > base){
+            if(ans >= base){
+                i=1;
                 while(i != number){
                     ans+=times;
                     i++;
