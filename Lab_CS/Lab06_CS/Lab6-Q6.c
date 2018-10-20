@@ -10,7 +10,7 @@ int main(){
 
     switch(request){
         case 'A':
-            //triangle |>:printf====================================================
+            /*triangle L\ */
             for(i=0; i<level; i++){		
                 for(j=0; j<=i; j++){
                     printf("*");
@@ -20,7 +20,7 @@ int main(){
             break;
 
         case 'B': 
-            //triangle |>:printf====================================================
+            /*triangle 「/ */
             for(i=0;i<=level;i++){		
                 for(j=i;j<level;j++){
                     printf("*");
@@ -30,7 +30,7 @@ int main(){
             break;
 
         case 'C': 
-            //triangle |>:printf====================================================
+            /*triangle \7 */
             for(i=0;i<level;i++){
                 for(k=0;k<=i;k++){
                     printf(" ");	
@@ -43,7 +43,7 @@ int main(){
             break;
 
         case 'D': 
-            //triangle |>:printf====================================================
+            /*triangle /」 */
             for(i=0;i<level;i++){	
                 for(k=i;k<level;k++){
                     printf(" ");	
