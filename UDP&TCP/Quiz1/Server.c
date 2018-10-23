@@ -13,10 +13,10 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-void swap(int *large, int *small){
-    int temp = *large;
-    *large = *small;
-    *small = temp;
+void swap(int *A, int *B){
+    int temp = *A;
+    *A = *B;
+    *B = temp;
 }
 
 int Max(int maxmum[]){
@@ -90,73 +90,59 @@ int main(void) {
     int minValue;
     int midValue;
 
-    /*接收*/
-    for(i=0; i<5; i++){
+    /*接收資料總數*/
+    int size[1];
+    addressSize = sizeof(client);
+    csock = accept(sock, (struct sockaddr*)&server, &addressSize);
+        
+    readSize = recv(csock, size, sizeof(size), 0);
+    printf("Read Size: %d \n", size[0]);
+
+    /*接收資料內容*/
+    for(i=0; i<size[0]; i++){
         addressSize = sizeof(client);
         csock = accept(sock, (struct sockaddr*)&server, &addressSize);
         
-        readSize = recv(csock, buf, sizeof(buf), 0);
-        buf[readSize] = '\0';
-
-        getting[i] = atoi(buf);
+        readSize = recv(csock, &getting[i], sizeof(getting[i]), 0);
         printf("Read Message: %d \n", getting[i]);
-  //      close(csock);
     }
 
-    // addressSize = sizeof(client);
-    // csock = accept(sock, (struct sockaddr*)&server, &addressSize);
- //   readSize = recv(csock, DataCounter[0], sizeof(DataCounter[0]), 0);
-
-  //  printf("DataCounter %d \n", DataCounter[0]);
-
-    // getting[0] = Max(hold);
-    // getting[1] = Min(hold);
-
-
-    int temp;
-
     /*排序——大到小*/
-    for(i=0; i<5; i++){
-		int min = i;
-		for(j = i + 1; j < 5; j++){
-			if(getting[j] > getting[min]){
-				min = j;
-			}
-		}
-		swap(&getting[i], &getting[min]);
-	}
+    /*冒泡排序法_Bubble Sort*/
+    int temp;
+    for(i=0; i<size[0]-1; i++){  
+        for(j=0; j<size[0]-i-1; j++){ 
+            if(getting[j] < getting[j+1]){
+                /*交換_SWAP*/
+                swap(&getting[j], &getting[j+1]);
+            }
+        }
+    }
 
     /*累加值*/
     int counter = 0;
-    for(i=0; i<5; i++){
+    for(i=0; i<size[0]; i++){
         counter = counter + getting[i];
     }
     totalNum[0] = counter;
 
 
     /*回傳*/
-    for(i=0; i<5; i++){
+    for(i=0; i<size[0]; i++){
         send(csock, &getting[i], sizeof(getting[i]), 0);
     }
 
      puts("\n\n");
 
     /*output testing*/
-    for(i=0; i<5; i++){
+    for(i=0; i<size[0]; i++){
         printf(" %d \n", getting[i]);
     }
     
     /*totalNum 回傳*/
     send(csock, &totalNum[0], sizeof(totalNum[0]), 0);
 
-   
 
-    
-
-
-    // for(i=0; i<5; i++){
-    //     printf("%d \n", hold[i]);
-    // }
     close(csock);
     close(sock);
 }

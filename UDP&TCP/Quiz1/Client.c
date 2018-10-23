@@ -30,7 +30,7 @@ int main(void) {
 
     char ipNum[15];
     int portNum[4];
-    char buf[]="TCP TEST";
+    
 
     /*通訊設定——建立通訊協定*/
     bzero(&server, sizeof(server));
@@ -46,27 +46,54 @@ int main(void) {
 
     int i;
     int counter = 0;
-
+    
+    int buf[256];
     
     puts("\n\n");
     printf("Plz intput the data:\n");
 
-    for(i=0; i<5; i++){
+    
+    int holding[1];
+    while(scanf("%d", holding) != EOF){
+        buf[counter] = holding[0];
+        counter++;
+    }   
 
-        scanf("%s",buf);
+    /*發送資料總數*/
+    int size[1];
+    size[0] = counter;
 
+    sock = socket(PF_INET, SOCK_STREAM, 0);
+    connect(sock, (struct sockaddr*)&server, sizeof(server));
+    send(sock, size, sizeof(size), 0);
+    printf("Send Size: %d \n",size[0]);
+
+    puts("\n\n");
+
+    // for(i=0; i<size[0]; i++){
+    //     printf("buf: %d \n", buf[i]);
+    // }
+
+    /*發送資料*/
+    int sendDate[1];
+    
+    for(i=0; i<size[0]; i++){
         sock = socket(PF_INET, SOCK_STREAM, 0);
         connect(sock, (struct sockaddr*)&server, sizeof(server));
-        send(sock, buf, sizeof(buf), 0);
-        printf("Send Message: %s \n",buf);
-        counter = counter + 1;
-    }   
+
+        send(sock, &buf[i], sizeof(buf[i]), 0);
+        printf("Send Message: %d \n", buf[i]);
+    }
+
+
+
+
 
     puts("\n\n");
 
     /*收到server排序後的結果 輸出*/
     printf("Sort:");
-    for(i=0; i<5; i++){
+    for(i=0; i<size[0]; i++){
         readSize = recv(sock, &getting[i], sizeof(getting[i]), 0);
         printf(" %d ", getting[i]);
     }
