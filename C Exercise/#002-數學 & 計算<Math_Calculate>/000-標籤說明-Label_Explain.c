@@ -7,12 +7,12 @@ int main(){
     
     printf(
             " Label    Explain\n"
-            " FMxx-   Fundamental Math\n"  //基礎數學
-            " Caxx-   Calculus\n"          //微積分
-            " Crxx-   Cryptography\n"      //密碼學
-            " DMxx-   Discrete Math\n"     //離散數學
-            " LAxx-   Linear Algebra\n"    //線性代數
-            " Pxx-    Probability\n"       //機率論
+            " FMxx-   Fundamental Math\n"           //基礎數學
+            " Caxx-   Calculus\n"                   //微積分
+            " Crxx-   Cryptography\n"               //密碼學
+            " DMxx-   Discrete Math\n"              //離散數學
+            " LAxx-   Linear Algebra\n"             //線性代數
+            " PSxx-    Probability & Statistics\n"  //機率論&統計學
            );
     
     puts("\n\nEnd\n");
