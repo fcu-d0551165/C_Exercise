@@ -1,16 +1,19 @@
 //
-//	Lebal Undefind
-//
 //  Lab 1_HW_Client.c
-//	Version 2.2 
+//
+//  001-字元與字串-Char_And_String.c
+//  Version 2
 //	
-//  Created by Waylon.Yuen on 24/9/2018
-//	Last modified by Waylon.Yuen on 19/10/2018
+//  Created by Waylon.Yuen on 24/9/2018.
+//  Last modified by Waylon.Yuen on 24/10/2018
 //  Copyright © 2018年 Oracragron. All rights reserved.
 //
-//	操作：
-//	優化：
+//  說明：
+//  操作：X
+//  原理：X
+//  優化：X
 //
+
 
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -19,34 +22,31 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+int i;
+
 int main(void) {
     
     struct sockaddr_in server;
     int sock,readSize;
 
-    int getting[256];
-    int totalNum[1];
-    int DataCounter[2];
-
+    /*輸入ip 和 port*/
     char ipNum[15];
-    int portNum[4];
-    
+    int portNum;
+    printf("Plz enter the ip number:\n");
+    scanf("%s",ipNum);
+    printf("Plz enter the port number:\n");
+    scanf("%d", &portNum);
 
     /*通訊設定——建立通訊協定*/
     bzero(&server, sizeof(server));
     server.sin_family = PF_INET;
-    server.sin_addr.s_addr = inet_addr("127.0.0.1");
-    server.sin_port = htons(5678);
+    server.sin_addr.s_addr = inet_addr(ipNum);
+    server.sin_port = htons(portNum);
 
-    /*輸入ip 和 port*/
-    printf("Plz enter the ip number:\n");
-    scanf("%s",ipNum);
-    printf("Plz enter the port number:\n");
-    scanf("%d",portNum);
 
-    int i;
-    int counter = 0;
     
+    int counter = 0;
+    int getting[256];
     int buf[256];
     
     puts("\n\n");
@@ -75,8 +75,6 @@ int main(void) {
     // }
 
     /*發送資料*/
-    int sendDate[1];
-    
     for(i=0; i<size[0]; i++){
         sock = socket(PF_INET, SOCK_STREAM, 0);
         connect(sock, (struct sockaddr*)&server, sizeof(server));
@@ -84,10 +82,6 @@ int main(void) {
         send(sock, &buf[i], sizeof(buf[i]), 0);
         printf("Send Message: %d \n", buf[i]);
     }
-
-
-
-
 
     puts("\n\n");
 

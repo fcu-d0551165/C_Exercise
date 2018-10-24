@@ -1,9 +1,17 @@
 //
 //  Lab 1_HW_Server.c
-//  Server
 //
+//  001-字元與字串-Char_And_String.c
+//  Version 2.0
+//	
 //  Created by Waylon.Yuen on 24/9/2018.
+//  Last modified by Waylon.Yuen on 24/10/2018
 //  Copyright © 2018年 Oracragron. All rights reserved.
+//
+//  說明：
+//  操作：X
+//  原理：X
+//  優化：X
 //
 
 #include <sys/socket.h>
@@ -79,16 +87,9 @@ int main(void) {
     bind(sock, (struct sockaddr*)&server, sizeof(server));
     listen(sock,5);
     
-
-
     int i,j;
     int hold[5];
-    int getting[256];
-    int totalNum[1];
-    int DataCounter[2];
-    int maxValue;
-    int minValue;
-    int midValue;
+    int getData[256];
 
     /*接收資料總數*/
     int size[1];
@@ -96,52 +97,53 @@ int main(void) {
     csock = accept(sock, (struct sockaddr*)&server, &addressSize);
         
     readSize = recv(csock, size, sizeof(size), 0);
-    printf("Read Size: %d \n", size[0]);
+    printf("\n\nRead data Size: %d \n\n", size[0]);
 
     /*接收資料內容*/
+    printf("Get Data\n"
+           "----------------------------\n");
     for(i=0; i<size[0]; i++){
         addressSize = sizeof(client);
         csock = accept(sock, (struct sockaddr*)&server, &addressSize);
         
-        readSize = recv(csock, &getting[i], sizeof(getting[i]), 0);
-        printf("Read Message: %d \n", getting[i]);
-    }
+        readSize = recv(csock, &getData[i], sizeof(getData[i]), 0);
+        printf("Read Message: %d \n", getData[i]);
+    }puts("End\n\n");
 
-    /*排序——大到小*/
+//Functions:server功能----------------------------------------------
+
     /*冒泡排序法_Bubble Sort*/
     int temp;
     for(i=0; i<size[0]-1; i++){  
         for(j=0; j<size[0]-i-1; j++){ 
-            if(getting[j] < getting[j+1]){
+            if(getData[j] < getData[j+1]){// "<" 和 ">" 決定排序是：由大到小"<" or 由小到到大">"
                 /*交換_SWAP*/
-                swap(&getting[j], &getting[j+1]);
+                swap(&getData[j], &getData[j+1]);
             }
         }
     }
 
     /*累加值*/
-    int counter = 0;
+    int totalNum = 0;
     for(i=0; i<size[0]; i++){
-        counter = counter + getting[i];
+        totalNum = totalNum + getData[i];
     }
-    totalNum[0] = counter;
+//End of Functions--------------------------------------------------
 
-
-    /*回傳*/
+    /*Sort Array 回傳*/
+    printf("Send Data\n"
+           "----------------------------\n");
     for(i=0; i<size[0]; i++){
-        send(csock, &getting[i], sizeof(getting[i]), 0);
-    }
-
-     puts("\n\n");
-
-    /*output testing*/
-    for(i=0; i<size[0]; i++){
-        printf(" %d \n", getting[i]);
-    }
+        send(csock, &getData[i], sizeof(getData[i]), 0);
+        printf("sendBack Msg %d \n", getData[i]);
+    }puts("End\n\n");
     
-    /*totalNum 回傳*/
-    send(csock, &totalNum[0], sizeof(totalNum[0]), 0);
-
+    /*Sum of numbers 回傳*/
+    printf("Send Sum of number\n"
+           "----------------------------\n");
+    send(csock, &totalNum, sizeof(totalNum), 0);
+    printf("sendBack TobalNum: %d\n", totalNum);
+    puts("End\n\n");
 
     close(csock);
     close(sock);
