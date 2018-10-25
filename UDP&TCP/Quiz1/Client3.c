@@ -128,15 +128,12 @@ int main(void) {
         printf(" %d ", getDate[i]);
     }puts("\n\n");
 
-    /*接收FuncNum*/
-    readSize = recv(sock, &getDate[1], sizeof(getDate[1]), 0);
-    printf("Get Func of data: %d\n\n", getDate[1]);
-
-
     /*接收totalNum*/
     readSize = recv(sock, &getDate[0], sizeof(getDate[0]), 0);
     printf("Get Average of data: %d\n\n", getDate[0]);
 
+    /*接收FuncNum*/
+    readSize = recv(sock, &getDate[1], sizeof(getDate[1]), 0);
+    printf("Get Func of data: %d\n\n", getDate[1]);
     
-
 }

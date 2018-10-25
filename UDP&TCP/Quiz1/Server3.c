@@ -11,7 +11,7 @@
 //  說明：
 //  操作：X
 //  原理：X
-//  優化：X
+//  優化：功能項除法給予float值(目前：int)
 //
 
 #include <sys/socket.h>
@@ -53,7 +53,7 @@ int main(void) {
     int i,j;
     int getData[256];
 
-    /*接收功能選項*/
+    /*接收-功能選項*/
     int funcFlag;
     addressSize = sizeof(client);
     csock = accept(sock, (struct sockaddr*)&server, &addressSize);
@@ -61,7 +61,7 @@ int main(void) {
     readSize = recv(csock, &funcFlag, sizeof(funcFlag), 0);
     printf("\n\nRead data funcFlag: %d \n\n", funcFlag);
 
-    /*接收資料總數*/
+    /*接收-資料總數*/
     int size;
     addressSize = sizeof(client);
     csock = accept(sock, (struct sockaddr*)&server, &addressSize);
@@ -69,7 +69,7 @@ int main(void) {
     readSize = recv(csock, &size, sizeof(size), 0);
     printf("\n\nRead data Size: %d \n\n", size);
 
-    /*接收資料內容*/
+    /*接收-資料內容*/
     printf("Get Data\n"
            "----------------------------\n");
     for(i=0; i<size; i++){
@@ -92,6 +92,7 @@ int main(void) {
     }puts("End\n\n");
 
 
+
     BubbleSortStB(getData, size);
     /*Sort Array 回傳 小到大*/
     printf("Send Data\n"
@@ -101,14 +102,6 @@ int main(void) {
         printf("sendBack Msg %d \n", getData[i]);
     }puts("End\n\n");
 
-    //功能項目
-    int Ans = Func(getData, size, funcFlag);
-    printf("Send Func of number\n"
-           "----------------------------\n");
-    send(csock, &Ans, sizeof(Ans), 0);
-    printf("sendBack AverageNum: %d\n", Ans);
-    puts("End\n\n");
-
     //平均
     int AverageNum = Average(getData, size);
     printf("Send Average of number\n"
@@ -117,8 +110,13 @@ int main(void) {
     printf("sendBack AverageNum: %d\n", AverageNum);
     puts("End\n\n");
 
-    
-
+    //功能項目
+    int Ans = Func(getData, size, funcFlag);
+    printf("Send Func of number\n"
+           "----------------------------\n");
+    send(csock, &Ans, sizeof(Ans), 0);
+    printf("sendBack AverageNum: %d\n", Ans);
+    puts("End\n\n");
 
 //End of Functions--------------------------------------------------
 
@@ -267,10 +265,10 @@ int Average(int Data[], int size){
 
 int Func(int Data[], int size, int funcFlag){
     /*功能區*/
-    int funcAns;
+    int funcAns;    //float
     switch(funcFlag){
         case 1: 
-            funcAns = SumOfNumber(Data, size);//累加
+            funcAns = SumOfNumber(Data, size);
             break;
         case 2: 
             funcAns = SubOfNumber(Data, size);
