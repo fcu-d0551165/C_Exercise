@@ -1,11 +1,11 @@
 //
-//	Lebal #002-FM02
+//	Lebal #002-數學 & 計算<Math_Calculate>
 //
-//  FM02-質數-Prime_Number.c
-//	Version 1.2 
+//  FM02_1-質數-Prime_Number.c
+//	Version 1.3 
 //	
 //  Created by Waylon.Yuen on 18/10/2018.
-//	Last modified by Waylon.Yuen on 19/10/2018
+//	Last modified by Waylon.Yuen on 26/10/2018
 //  Copyright © 2018年 Oracragron. All rights reserved.
 //
 //  說明：輸入整數，判斷其是否為質數。
