@@ -54,9 +54,16 @@ int main(){
                 3、Function文檔
                 */
             
-            " Opt & _Self_Lebal-    Optimizationg\n"
+            " Opt & _Self_Lebal-    Optimizationg\n\n"
             /* #最佳化 —— ”需優化“標籤
                 1、等待優化
+                */
+            
+            " C & _Self_Lebal-      Checking\n"
+            /* #檢查
+                1、檢查說明欄位所有標籤(版本、名稱、最後修改日期等)是否為 最新&完善
+                2、檢查內容是否有備註
+                3、是否有進行優化
                 */
 
            );
@@ -118,7 +125,9 @@ int main(){
                         本地定義(2): A54-02FM05-累加n次-Superposition.c
                         本地定義(n): ???-02FM05-累加n次-Superposition.c
                 */
-           );       
+           );    
+
+    printf("\n");       
     
     puts("\n\nEnd\n");
     
