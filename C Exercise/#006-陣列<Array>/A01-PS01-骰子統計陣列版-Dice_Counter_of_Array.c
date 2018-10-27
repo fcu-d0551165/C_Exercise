@@ -3,7 +3,6 @@
 
 int main(){
 
-
     int counter[6]={0};
     int i;
 
@@ -19,16 +18,14 @@ int main(){
             case 4: counter[3]++; break;
             case 5: counter[4]++; break;
             case 6: counter[5]++; break;
+            default: printf("Miss Error\n"); break;
         }
     }
 
     /*Output*/
-    printf("1: %d\n", counter[0]);
-    printf("2: %d\n", counter[1]);
-    printf("3: %d\n", counter[2]);
-    printf("4: %d\n", counter[3]);
-    printf("5: %d\n", counter[4]);
-    printf("6: %d\n", counter[5]);
+    for(i=0; i<6; i++){
+        printf("%d: %d\n", i,counter[i]);
+    }
 
     return 0;
 }
