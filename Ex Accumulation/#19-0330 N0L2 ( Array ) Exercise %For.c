@@ -1,4 +1,4 @@
-// 編號：#19-0330 N00 F ( Array ) Exercise %For L2.c
+// 編號：#19-0330 N0L2 ( Array ) Exercise %For.c
 
 // 程式類別：C語言
 // 基礎題：陣列練習 ( 難度 ** )
