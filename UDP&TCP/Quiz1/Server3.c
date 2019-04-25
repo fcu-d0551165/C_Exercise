@@ -22,6 +22,7 @@
 #include <unistd.h>
 
 void swap(int *A, int *B);
+void BubbleSort(int Data[], int size, int compare);
 void BubbleSortBtS(int Data[], int size);
 void BubbleSortStB(int Data[], int size);
 int SumOfNumber(int Data[], int size);
@@ -82,6 +83,9 @@ int main(void) {
 
 //Functions:server功能----------------------------------------------
 
+    // 0: Big to small; 1:small to Big
+
+    BubbleSort(getData, size, 0);
     BubbleSortBtS(getData, size);
     /*Sort Array 回傳 大到小*/
     printf("Send Data\n"
@@ -92,7 +96,7 @@ int main(void) {
     }puts("End\n\n");
 
 
-
+    BubbleSort(getData, size, 1);
     BubbleSortStB(getData, size);
     /*Sort Array 回傳 小到大*/
     printf("Send Data\n"
@@ -158,6 +162,26 @@ void BubbleSortStB(int Data[], int size){
         }
     }
 }
+
+void BubbleSort(int Data[], int size, int Compare){
+
+    int i,j;
+    for(i=0; i<size-1; i++){
+        for(j=0; j<size-i-1; j++){
+            if(Compare == 1){
+                if(Data[j] > Data[j+1]){
+                    swap(&Data[j],&Data[j+1]);
+                }
+            }else{
+                if(Data[j] < Data[j+1]){
+                    swap(&Data[j],&Data[j+1]);
+                }
+            }
+        }
+
+    }
+}
+
 
 /*累加 Data[]資料*/
 int SumOfNumber(int Data[], int size){
