@@ -51,4 +51,52 @@
 //                  1 0 1 1 0 1 0 0 0 1
 //                  1 1 0 1 0 1 1 0 0 1
 //                  1 0 0 0 1 0 1 0 1 1
-//                  1 1 1 1 1 1 1 1 1 1      
+//                  1 1 1 1 1 1 1 1 1 1   
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void MapGenerator(int SettingFlag, int RamdomFlag, int Width, int Height){
+
+    int Map[Width][Height];
+
+    int RamdomNum;
+    srand(time(NULL));
+    
+
+    for(int y=0; y<Height; y++){
+        for(int x=0; x<Width; x++){
+
+            if( x==0 || y==0 || x==(Width-1) || y==(Height-1) ){
+                Map[y][x] = 1;
+            }else{
+                Map[y][x] = 0;
+                if(RamdomFlag == 1){
+                    RamdomNum = rand()%2;
+                    Map[y][x] = RamdomNum;
+                }
+            }
+            
+            if(SettingFlag == 1){
+                printf("%d ", Map[y][x]);
+                if( x==Width-1 ){
+                    printf("\n");
+                }
+            }
+        }
+    }
+
+}
+
+int main(void){
+
+    int X,Y;
+    printf("Plz intput the size on your map\n");
+    scanf("%d%d", &X, &Y);
+
+    MapGenerator(0,0, X,Y);
+    MapGenerator(1,1, X,Y);
+
+    return 0;
+}
