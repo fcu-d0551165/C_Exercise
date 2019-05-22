@@ -53,3 +53,70 @@
 //                  contain...
 //              }
 //          }
+
+/*Lirary引用*/
+#include <stdio.h>
+
+/*變量定義*/
+#define arraySIZE 10
+//#define _Debug_
+
+/*全域宣告*/
+int Array[arraySIZE][arraySIZE] = {0};  //初始化陣列為 0
+
+/*副程式宣告*/
+void display(void);
+int SetLine(int Line);
+
+/*主程式入口*/
+int main(void){
+
+    int Line;
+
+    printf("Plz input the line number for 0~9\n");
+    scanf("%d", &Line);
+
+    /*範圍偵測*/
+    if(Line > 9 || Line < 0){
+        puts("data range Error! \n\n ......End of run");
+        return 0;
+    }else{
+        /*副程式呼叫*/
+        #ifdef _Debug_
+            int TestLine = SetLine(Line);
+            display();
+            printf("\nLine: %d\n", Line);
+            printf("Test Line: %d\n", TestLine);
+        #else
+            SetLine(Line);
+            display();
+        #endif
+    }
+
+    return 0;
+}
+
+/*副程式-結果輸出*/
+void display(void){
+
+    int i,j;
+
+    for(i=0; i<10; i++){
+        for(j=0; j<10; j++){
+            printf("%d ", Array[i][j]);
+        }
+        puts("");   //換行
+    }
+}
+
+int SetLine(int Line){
+
+    int i;
+
+    for(i=0; i<10; i++){
+        Array[Line][i] = 1;
+    }
+
+    return Line;
+}
+
