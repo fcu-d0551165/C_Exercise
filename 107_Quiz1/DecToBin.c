@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 32 //lenght of bits
+#define SIZE 32 //總位元長度
+#define Block 8 //間隔區塊大小
 
 int main(void){
 
@@ -10,8 +11,8 @@ int main(void){
     int counter = 0;        //Format
     int Bin[SIZE] = {0};    //Setting: Bin[SIZE] All of 0
 
-    scanf("%d",&DecNum);    //input data
-
+    //scanf("%d",&DecNum);    //input data
+    DecNum = 15;
     /*Calculus*/
     while (DecNum >= 1){
         Ans = DecNum % 2;
@@ -30,7 +31,7 @@ int main(void){
         printf("%d", Bin[i]);
 
         counter ++;
-        if(counter == 8 && i > 2){  // i>2 is close the last "-"
+        if(counter == Block && i > 0){  // i>2 is close the last "-"
             printf("-");
             counter = 0;
         }
