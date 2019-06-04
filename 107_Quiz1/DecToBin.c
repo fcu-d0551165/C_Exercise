@@ -20,7 +20,7 @@ int main(void){
         Bin[i] = Ans;   //Save to Bin[]
         i++;    //Loop
 
-        // if(i>32){
+        // if(i>SIZE){
         //     printf("Error! Plz check the range of Loop i\n");
         //     return 0;
         // }
