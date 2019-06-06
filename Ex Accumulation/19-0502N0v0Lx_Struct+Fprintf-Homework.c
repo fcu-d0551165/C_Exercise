@@ -48,13 +48,13 @@ int main(void){
 
     /*輸出並保存至外部文件*/
     FILE *fptr; //文件指標宣告
-    if( (fptr = fopen("FILE_PATH", "w")) != NULL){  //判斷路徑是否存在文件
+    if( (fptr = fopen("save.txt", "w")) != NULL){  //判斷路徑是否存在文件
         //成功讀取文件
         puts("File open Success！");
         puts("**************************");
         
         /*逐筆資料保存至外部文件*/
-        for(i=1; i<MemberSIZE; i++){
+        for(i=1; i<MemberSIZE+1; i++){
             fprintf(
                 fptr,"%d\t%s\t%s\t%lf\n", 
                 (p+i)->account_number,
