@@ -1,0 +1,21 @@
+﻿<Properties>
+  <MonoDevelop.Ide.ItemProperties.Ex__Software__Engineering__dll FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Ex_Software_Engineering_dll/Class1.cs">
+    <Files>
+      <File FileName="Ex_Software_Engineering_dll/Class1.cs" Line="7" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Ex_Software_Engineering_dll" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
