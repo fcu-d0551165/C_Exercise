@@ -4,12 +4,13 @@
 ```
 .
 ├── ...
-├── docs                    # Documentation
-├── diagrams                # UML Diagrams
-├── src                     # Application sources
-├── test                    # Test sources
+├── docs                    # Documentation (文件)
+├── diagrams                # UML Diagrams  (圖片)
+├── Src                     # Code Sources  (代碼)
+├── Helper                  # contract      (承包)
+├── Temp                    # Temporary     (暫存)
 └── ...
 ```
 
 # 介紹
-1081 逢甲軟體工程課程使用的專題基礎專案。請使用 [Code::Blocks](http://www.codeblocks.org/) 開發
+
