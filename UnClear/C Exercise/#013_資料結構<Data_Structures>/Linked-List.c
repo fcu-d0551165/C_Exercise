@@ -1,6 +1,3 @@
-//
-//未完成Debug
-//
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
