@@ -5,10 +5,10 @@ int Container[10] = {};
 
 int main(){
 
-    scanf("%d", &Container[i]);
-
-    int i,j;
+    int i, j;
     int temp;
+    
+    scanf("%d", &Container[i]);
 
     /*冒泡排序法_Bubble Sort*/
     for(i=0; i<10-1; i++){  
