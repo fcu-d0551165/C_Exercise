@@ -2,10 +2,14 @@
 #include <stdlib.h> 
 #include <string.h>
 
+#define Turn 1	//反向輸出, 參數( 1 or 0 )
+
 typedef struct node{
     int data;
     struct node *next;
 }Node; 
+
+void reverseList(Node* first);
 
 /*get the memory*/
 Node *create(){  
@@ -35,24 +39,28 @@ void Push(Node *head, int data){
 
 /*Print the List*/
 void List(Node *head){
-	reverseList(head);
-    Node *ptr = head;
+	Node *ptr = head;
+	if(ptr->next == NULL){
+		printf("NULL\n");
+		return;
+	}
+	if(Turn) reverseList(head);
     while(ptr->next != NULL){
         ptr=ptr->next;
         printf("%d\t",ptr->data);
     }
     printf("\n");
-    reverseList(head);	//Restore
+    if(Turn) reverseList(head);	//Restore
 }
 
 /*Delete the Note(Last one)*/
 void Pop(Node *head){
 	
 	if(head == NULL || head->next == NULL){
-		printf("list is empty!");
+		printf("堆疊已空!");
 		return;
 	}
-	
+
     Node *ptr = head;			
     Node *tmp = NULL;
     
@@ -64,10 +72,11 @@ void Pop(Node *head){
     tmp->next = NULL; 
 }
 
-int reverseList(Node* first){
+void reverseList(Node* first){
 
 	if(first == NULL || first->next == NULL){
- 		exit(1);
+ 		printf("堆疊已空!");
+		return;
 	}
 
 	Node* previous = NULL;
@@ -87,7 +96,7 @@ int reverseList(Node* first){
 }
 
 
-int SWAP(Node* first){
+void SWAP(Node* first){
 
 	if(first == NULL || first->next == NULL){
  		exit(1);
@@ -118,17 +127,22 @@ int SWAP(Node* first){
 }
 
 void Instructions(void){
-		printf(	"%s",	"\n-------  Instructions  ---------\n\n"
+	printf(	"%s",	"\n-------  Instructions  ---------\n\n"
 
-							"Selections:\n\n"
-								"\t 1 - Push\n"
-								"\t 2 - Pop\n"
-								"\t 3 - List\n"
-								"\t 4 - reverseList\n"
-								"\t 0 - Exit\n\n"
-								
-								"--------------------------------\n");
+						"Selections:\n\n"
+							"\t 1 - Push\n"
+							"\t 2 - Pop\n"
+							"\t 3 - List\n"
+							"\t 4 - reverseList\n"
+							"\t 0 - Exit\n\n"
+							
+							"--------------------------------\n");
 }
+
+void Menu(void){
+	printf("[1]新增 [2]刪除 [3]顯示 [0]結束 :");
+}
+
 
 int main(){
 	
@@ -136,12 +150,13 @@ int main(){
 	Node *head = create();
 	char request;
 	
-	Instructions();
+	//Instructions();
+	//Menu();
 	
 	while(1){
-		printf("\n\t - Enter request ==>  ");
+		//printf("\n\t - Enter request ==>  ");
+		Menu();
 		scanf("%s",&request);	// request value 
-		printf("\n");	
 		
 		switch(request){
 			case'0':	//End of run
@@ -150,7 +165,7 @@ int main(){
 				break;
 						
 			case'1'://Push
-					printf("Plz input the data:  ");
+					printf("輸入值:  ");
 					scanf("%d",&data);
 					Push(head, data);			
 				break; 
@@ -160,20 +175,20 @@ int main(){
 				break; 
 					
 			case'3'://print List		
-				printf("\n List:\t");
+				printf("堆疊內容: ");
 				List(head);
-				printf("=====================\n");
 				break;
 			
-//			case'4'://Pop
-//				SWAP(head);
-//				break;
+			//case'4'://Pop
+			//	SWAP(head);
+			//	break;
 			
 			
 			default://Eorr-Other key
 				printf("\n Miss Eorr\n");
 				break;
 		}
+		puts("");
 	}
 	
 return 0;
